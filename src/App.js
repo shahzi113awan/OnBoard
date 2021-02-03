@@ -1,10 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
+import KYC from "./Components/KYC";
 
 function App() {
   return (
-    <div className="App">
+    <div className="container">
       <h1>Bismillah</h1>
+      <KYC />
     </div>
   );
 }
