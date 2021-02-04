@@ -6,12 +6,14 @@ import Select from "react-select";
 
 const KYC = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const [ExpiryDate, setExpiryDate] = useState(new Date());
+  const [ExpiryDate, setExpiryDate] = useState();
   const [remainig, setremainig] = useState(0);
   const [value, setValue] = useState("");
   const options = useMemo(() => countryList().getData(), []);
+  const [color, setColor] = useState("none");
 
   const changeHandler = (value) => {
+    console.log(value);
     setValue(value);
   };
   const onChangeStartDAte = (e) => {
@@ -22,17 +24,24 @@ const KYC = () => {
   };
   useEffect(() => {
     if (startDate && ExpiryDate) {
-      const Start = moment(startDate);
-      // console.log(Start);
+      const Start = moment(new Date()).format("MM/DD/YYYY");
+
+      console.log(Start);
       const End = moment(ExpiryDate);
+      console.log(ExpiryDate);
       const days = moment.duration(End.diff(Start)).asDays();
       console.log(days);
       setremainig(days);
+      if (days > 90) setColor("#ADFF2F");
+      else if (days < 90 && days > 45) setColor("#FFBF00");
+      else setColor("	#FA8072");
       return days;
     }
-  }, [ExpiryDate, startDate]);
+  }, [ExpiryDate]);
 
-  console.log(remainig);
+  const fun = (e) => {
+    console.log(e.target.value);
+  };
   return (
     <div>
       <Form>
@@ -101,7 +110,7 @@ const KYC = () => {
             <FormGroup>
               <Label for="remainingDays">Remaining Days</Label>
               <Input
-                style={{ backgroundColor: "red" }}
+                style={{ backgroundColor: color }}
                 type="text"
                 disabled={true}
                 value={remainig}
@@ -120,7 +129,7 @@ const KYC = () => {
           </Col>
           <Col md={6}>
             <FormGroup>
-              <Label for="ExpiryDate">Notarized</Label>
+              <Label for="Notaized">Notarized</Label>
               <Input
                 type="select"
                 options={("yes", "no")}
@@ -146,11 +155,28 @@ const KYC = () => {
             <FormGroup>
               <Label for="typeOfProof">Type of Proof</Label>
               <Input
-                type="text"
-                name="typeOfProof"
-                id="typeOfProof"
-                placeholder=" Type of Proof"
-              ></Input>
+                type="select"
+                onChange={(e) => {
+                  fun(e);
+                }}
+              >
+                <option>Utility Bill</option>
+                <option>Others</option>
+              </Input>
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="PAd">Power Of Attorney Document:</Label>
+              <Input
+                type="select"
+                onChange={(e) => {
+                  fun(e);
+                }}
+              >
+                <option>Pending</option>
+                <option>Completed</option>
+              </Input>
             </FormGroup>
           </Col>
         </Row>
