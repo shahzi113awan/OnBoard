@@ -1,7 +1,20 @@
 import React from "react";
-import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Col, Row,   Form, FormGroup, Label, Input } from "reactstrap";
+import { connect } from "react-redux";
+import { completed, pending } from "../actions/completedAction";
 
-export default function CTI() {
+const CTI = ({ Done, completed, pending }) => {
+  const onProofDomain = (e) => {
+    const val = e.target.value;
+    console.log(e.target.value);
+    if (val === 1) {
+      completed(e);
+    } else if (val === 0) {
+      pending(e);
+    }
+  };
+  // pending();
+
   return (
     <div>
       <div>
@@ -74,12 +87,16 @@ export default function CTI() {
           <Col md={6}>
             <FormGroup>
               <Label for="CCR">Website URL - Proof of Domain:</Label>
-              <select class="custom-select" id="1">
-                <option selected value="0">
+              <select
+                onChange={(e) => onProofDomain(e)}
+                class="custom-select"
+                id="1"
+              >
+                <option selected value="Pending">
                   Pending
                 </option>
-                <option value="1">Received</option>
-                <option value="2">Approved</option>
+                <option value="Received">Received</option>
+                <option value="Approved">Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -111,4 +128,11 @@ export default function CTI() {
       </Form>
     </div>
   );
-}
+};
+const mapStateToProps = (state) => ({
+  Done: state.completedReducer.complete,
+});
+export default connect(mapStateToProps, {
+  completed,
+  pending,
+})(CTI);

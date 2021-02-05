@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Col, Row,   Form, FormGroup, Label, Input } from "reactstrap";
 import moment from "moment";
 import countryList from "react-select-country-list";
 import Select from "react-select";
-
-const KYC = () => {
+import { connect } from "react-redux";
+import { completed, pending } from "../actions/completedAction";
+const KYC = ({ Done, completed, pending }) => {
   const [startDate, setStartDate] = useState(new Date());
   const [ExpiryDate, setExpiryDate] = useState();
   const [remainig, setremainig] = useState(0);
@@ -22,6 +23,7 @@ const KYC = () => {
   const onChangeExpiryDAte = (e) => {
     setExpiryDate(e.target.value);
   };
+  //CalculateDays
   useEffect(() => {
     if (startDate && ExpiryDate) {
       const Start = moment(new Date()).format("MM/DD/YYYY");
@@ -30,7 +32,7 @@ const KYC = () => {
       const End = moment(ExpiryDate);
       console.log(ExpiryDate);
       const days = moment.duration(End.diff(Start)).asDays();
-      console.log(days);
+
       setremainig(days);
       if (days > 90) setColor("#ADFF2F");
       else if (days < 90 && days > 45) setColor("#FFBF00");
@@ -38,7 +40,7 @@ const KYC = () => {
       return days;
     }
   }, [ExpiryDate]);
-
+  //End
   const fun = (e) => {
     console.log(e.target.value);
   };
@@ -135,8 +137,8 @@ const KYC = () => {
                 options={("yes", "no")}
                 placeholder=" Nationality"
               >
-                <option>No</option>
-                <option>yes</option>
+                <option value="0">No</option>
+                <option value="1">yes</option>
               </Input>
             </FormGroup>
           </Col>
@@ -160,8 +162,8 @@ const KYC = () => {
                   fun(e);
                 }}
               >
-                <option>Utility Bill</option>
-                <option>Others</option>
+                <option value="0">Utility Bill</option>
+                <option value="1">Others</option>
               </Input>
             </FormGroup>
           </Col>
@@ -174,8 +176,8 @@ const KYC = () => {
                   fun(e);
                 }}
               >
-                <option>Pending</option>
-                <option>Completed</option>
+                <option value="0">Pending</option>
+                <option value="1">Completed</option>
               </Input>
             </FormGroup>
           </Col>
@@ -185,4 +187,10 @@ const KYC = () => {
   );
 };
 
-export default KYC;
+const mapStateToProps = (state) => ({
+  Done: state.completedReducer.complete,
+});
+export default connect(mapStateToProps, {
+  completed,
+  pending,
+})(KYC);
