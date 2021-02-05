@@ -5,14 +5,15 @@ import Multiple from "./Components/MultipleShareKYC";
 import CTI from "./Components/CTI";
 import KYB from "./Components/KYB";
 import SDKYB from "./Components/supportingDocKYB";
+import CI from "./Components/CI";
 
 function App() {
   return (
     <div className="container">
       {/* <KYC/> */}
       {/* <CTI /> */}
-
-      <SDKYB />
+      <CI />
+      {/* <KYB /> */}
     </div>
   );
 }
