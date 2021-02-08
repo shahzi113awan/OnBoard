@@ -13,6 +13,8 @@ import {
   DropdownItem,
   NavbarText,
 } from "reactstrap";
+import { Link } from 'react-router-dom';
+
 
 export const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,21 +24,21 @@ export const Header = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">ONBOARD</NavbarBrand>
+        <Link to="/">ONBOARD</Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/KYC">KYC</NavLink>
+              <Link to="/KYC">KYC</Link>
             </NavItem>
             <NavItem>
-              <NavLink href="/KYB">KYB</NavLink>
+              <Link to="/KYB">KYB</Link>
             </NavItem>
             <NavItem>
-              <NavLink href="/CTI">Company Trading INFO</NavLink>
+              <Link to="/CTI">Company Trading INFO</Link>
             </NavItem>
             <NavItem>
-              <NavLink href="/CI">Compnay Information</NavLink>
+              <Link to="/CI">Compnay Information</Link>
             </NavItem>
           </Nav>
         </Collapse>
