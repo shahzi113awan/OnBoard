@@ -5,6 +5,8 @@ import {
   AiOutlineReload,
 } from "react-icons/ai";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Link } from "react-router-dom";
+
 const styLabel = { border: "2px solid black", width: "50%" };
 export const CheckList = () => {
   return (
@@ -1589,6 +1591,9 @@ export const CheckList = () => {
             </FormGroup>
           </Col>
         </Row>
+         <Link>
+            <Button>Update Details</Button>
+          </Link>
       </Form>
     </div>
   );

@@ -1,3 +1,4 @@
+import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import KYC from "./Components/KYC";
@@ -7,7 +8,7 @@ import KYB from "./Components/KYB";
 import SDKYB from "./Components/supportingDocKYB";
 import CI from "./Components/CI";
 import { CheckList } from "./Components/checklist";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import MainDashboard from "./Components/MainDashboard";
@@ -19,13 +20,18 @@ function App() {
       <Provider store={store}>
         <Router>
           <Header />
-          <Route exact path="/" component={MainDashboard} />
-          <Route exact path="/ci" component={CI} />
-          <Route exact path="/cti" component={CTI} />
-          <Route exact path="/kyc" component={KYC} />
-          <Route exact path="/kyb" component={KYB} />
-          <Route exact path="/sdkyb" component={SDKYB} />
-          <Route exact path="/check-List" component={CheckList} />
+          <Switch>
+            <div>
+              <Route exact path="/" component={MainDashboard} />
+              <Route path="/ci" component={CI} />
+              <Route path="/cti" component={CTI} />
+              <Route path="/kyc" component={KYC} />
+              <Route path="/kyb" component={KYB} />
+              <Route path="/sdkyb" component={SDKYB} />
+              <Route path="/check-List" component={CheckList} />
+              <Route path="/supporting-doc-kyb" component={SDKYB} />
+            </div>
+          </Switch>
         </Router>
       </Provider>
     </div>

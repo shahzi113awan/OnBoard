@@ -8,6 +8,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,26 +16,44 @@ export const Header = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div style={{ height: "60%", padding: 20 }}>
-      <Navbar style={{ padding: 20 }} color="light" light expand="md">
-        <NavbarBrand href="/">ONBOARD</NavbarBrand>
+    <div>
+      <Navbar color="light" light expand="md">
+        <NavLink active tag={Link} to="/">
+          ONBOARD
+        </NavLink>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem >
-              <NavLink href="/KYC">KYC</NavLink>
+            <NavItem>
+              <NavLink tag={Link} to="/CI">
+                Compnay Information
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/KYB">KYB</NavLink>
+              <NavLink tag={Link} to="/CTI">
+                Company Trading INFO
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/CTI">Company Trading INFO</NavLink>
+              <NavLink tag={Link} tag={Link} to="/KYC">
+                KYC
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/CI">Compnay Information</NavLink>
+              <NavLink tag={Link} to="/KYB">
+                KYB
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/check-List">Check List</NavLink>
+              <NavLink tag={Link} to="/supporting-doc-kyb">
+               Supporting Doc
+              </NavLink>
+            </NavItem>
+
+            <NavItem>
+              <NavLink tag={Link} to="/check-List">
+                Check List
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>

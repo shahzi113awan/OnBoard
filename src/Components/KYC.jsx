@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Col, Row, Form, FormGroup, Label, Input , Button } from "reactstrap";
+import { Col, Row, Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import countryList from "react-select-country-list";
 import Select from "react-select";
@@ -187,6 +188,9 @@ const KYC = ({ Done, completed, pending }) => {
             </FormGroup>
           </Col>
         </Row>
+        <Link to="/kyb">
+          <Button>Next</Button>
+        </Link>
       </Form>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from "react";
-import { Col, Row,  Form, FormGroup, Label, Input } from "reactstrap";
+import { Col, Row, Form, FormGroup, Label, Button, Input } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default function CTI() {
-  
   return (
     <div>
       <div>
@@ -87,6 +87,9 @@ export default function CTI() {
             </FormGroup>
           </Col>
         </Row>
+        <Link to="/supporting-doc-kyb">
+          <Button>Next</Button>
+        </Link>
       </Form>
     </div>
   );

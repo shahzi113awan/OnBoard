@@ -8,10 +8,11 @@ export default function MainDashboard() {
                     <caption>List of users</caption>
                     <thead>
                         <tr style={{ height: 100 }}>
-                            <th scope="col">#</th>
+                            <th scope="col"><p style={{ transformList: 'rotate(-90)' }}>Application count and Reffernce</p></th>
                             <th scope="col">First</th>
                             <th scope="col">Last</th>
-                            <th scope="col text-vertical" >Handle</th>
+                            <th scope="col text-vertical" >
+                                <p >Handle </p></th>
                         </tr>
                     </thead>
                     <tbody>

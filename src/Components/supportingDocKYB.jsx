@@ -1,5 +1,7 @@
 import React from "react";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Link } from "react-router-dom";
+
 
 export default function CTI() {
   return (
@@ -134,7 +136,9 @@ export default function CTI() {
             </FormGroup>
           </Col>
         </Row>
-        <button>subm</button>
+        <Link to="/check-List">
+          <Button>Next</Button>
+        </Link>
       </Form>
     </div>
   );
