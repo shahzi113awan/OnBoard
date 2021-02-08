@@ -16,15 +16,16 @@ import { Header } from "./Components/Navbar";
 function App() {
   return (
     <div className="container">
-      <Header />
       <Provider store={store}>
         <Router>
+          <Header />
           <Route exact path="/" component={MainDashboard} />
           <Route exact path="/ci" component={CI} />
           <Route exact path="/cti" component={CTI} />
           <Route exact path="/kyc" component={KYC} />
           <Route exact path="/kyb" component={KYB} />
           <Route exact path="/sdkyb" component={SDKYB} />
+          <Route exact path="/check-List" component={CheckList} />
         </Router>
       </Provider>
     </div>

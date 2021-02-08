@@ -7,11 +7,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
 } from "reactstrap";
 
 export const Header = (props) => {
@@ -20,13 +15,13 @@ export const Header = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Navbar color="light" light expand="md">
+    <div style={{ height: "60%", padding: 20 }}>
+      <Navbar style={{ padding: 20 }} color="light" light expand="md">
         <NavbarBrand href="/">ONBOARD</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem>
+            <NavItem >
               <NavLink href="/KYC">KYC</NavLink>
             </NavItem>
             <NavItem>
@@ -37,6 +32,9 @@ export const Header = (props) => {
             </NavItem>
             <NavItem>
               <NavLink href="/CI">Compnay Information</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/check-List">Check List</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
