@@ -6,6 +6,7 @@ import CTI from "./Components/CTI";
 import KYB from "./Components/KYB";
 import SDKYB from "./Components/supportingDocKYB";
 import CI from "./Components/CI";
+import { CheckList } from "./Components/checklist";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -13,9 +14,9 @@ import store from "./store";
 function App() {
   return (
     <div className="container">
-      <Provider store={store}> 
+      <Provider store={store}>
         <Router>
-          <Route exact path="/" component={CI} />
+          <Route exact path="/" component={CheckList} />
           <Route exact path="/kyc" component={KYC} />
           <Route exact path="/kyb" component={KYB} />
           <Route exact path="/sdkyb" component={SDKYB} />
