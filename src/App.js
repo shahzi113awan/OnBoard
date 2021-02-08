@@ -10,13 +10,18 @@ import { CheckList } from "./Components/checklist";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
+import MainDashboard from "./Components/MainDashboard";
+import { Header } from "./Components/Navbar";
 
 function App() {
   return (
     <div className="container">
+      <Header />
       <Provider store={store}>
         <Router>
-          <Route exact path="/" component={CheckList} />
+          <Route exact path="/" component={MainDashboard} />
+          <Route exact path="/ci" component={CI} />
+          <Route exact path="/cti" component={CTI} />
           <Route exact path="/kyc" component={KYC} />
           <Route exact path="/kyb" component={KYB} />
           <Route exact path="/sdkyb" component={SDKYB} />
