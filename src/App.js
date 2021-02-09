@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import logo from "./logo.svg";
 import "./App.css";
+import "./assets/css/Tcss.css";
 import KYC from "./Components/KYC";
 import Multiple from "./Components/MultipleShareKYC";
 import CTI from "./Components/CTI";
