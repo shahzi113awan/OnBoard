@@ -1,10 +1,11 @@
 import React from "react";
-import { Col, Row, Form, FormGroup, Label, Input } from "reactstrap";
+import { Col, Row, Form, FormGroup, Label, Button, Input } from "reactstrap";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { completed, pending } from "../actions/completedAction";
 
 const CTI = ({ Done, completed, pending }) => {
-
   const onProofDomain = (e) => {
     const val = e.target.value;
     console.log(e.target.value);
@@ -13,121 +14,122 @@ const CTI = ({ Done, completed, pending }) => {
     } else if (val === 0) {
       pending(e);
     }
-  }; 
-    return (
+  };
+  return (
+    <div>
       <div>
-        <div>
-          <h2>
-            <span class="badge badge-success">COMPANY TRADING INFORMATION</span>
-          </h2>
-        </div>
-        <Form>
-          <Row form>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="certificate">
-                  Fully Completed Application Form:
-                </Label>
-                <select class="custom-select" id="1">
-                  <option selected value="0">
-                    {" "}
-                    Pending{" "}
-                  </option>
-                  <option value="1">Received</option>
-                  <option value="2">Approved</option>
-                </select>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="memo">Bank Information (Welcome Letter):</Label>
-                <select class="custom-select" id="1">
-                  <option selected value="0">
-                    {" "}
-                    Pending{" "}
-                  </option>
-                  <option value="1">Received</option>
-                  <option value="2">Approved</option>
-                </select>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="OTA">Office Tenancy Agreement:</Label>
-
-                <Input
-                  required={false}
-                  type="text"
-                  name="OTA"
-                  id="Name"
-                  placeholder="OTA"
-                ></Input>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="shareRegister">Headline Website URL Address:</Label>
-                <select class="custom-select" id="1">
-                  <option selected value="0">
-                    {" "}
-                    Pending{" "}
-                  </option>
-                  <option value="1">Received</option>
-                  <option value="2">Approved</option>
-                </select>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="shareCertificate">Website Compliance:</Label>
-                <Input
-                  type="url"
-                  name="OTA"
-                  id="Url"
-                  placeholder="Company URL"
-                ></Input>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="CCR">Website URL - Proof of Domain:</Label>
-                <select class="custom-select" id="1">
-                  <option selected value="0">
-                    {" "}
-                    Pending{" "}
-                  </option>
-                  <option value="1">Received</option>
-                  <option value="2">Approved</option>
-                </select>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="CCR">Ownership Structure Chart:</Label>
-                <select class="custom-select" id="1">
-                  <option selected value="0">
-                    {" "}
-                    Pending{" "}
-                  </option>
-                  <option value="1">Received</option>
-                  <option value="2">Approved</option>
-                </select>
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="CCR">Business Plan:</Label>
-                <select class="custom-select" id="1">
-                  <option value="0"> Pending </option>
-                  <option value="1">Received</option>
-                  <option value="2">Approved</option>
-                </select>
-              </FormGroup>
-            </Col>
-          </Row>
-        </Form>
+        <h2>
+          <span class="badge badge-success">COMPANY TRADING INFORMATION</span>
+        </h2>
       </div>
-    );
-  }
- 
+      <Form>
+        <Row form>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="certificate">Fully Completed Application Form:</Label>
+              <select class="custom-select" id="1">
+                <option selected value="0">
+                  {" "}
+                  Pending{" "}
+                </option>
+                <option value="1">Received</option>
+                <option value="2">Approved</option>
+              </select>
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="memo">Bank Information (Welcome Letter):</Label>
+              <select class="custom-select" id="1">
+                <option selected value="0">
+                  {" "}
+                  Pending{" "}
+                </option>
+                <option value="1">Received</option>
+                <option value="2">Approved</option>
+              </select>
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="OTA">Office Tenancy Agreement:</Label>
+
+              <Input
+                required={false}
+                type="text"
+                name="OTA"
+                id="Name"
+                placeholder="OTA"
+              ></Input>
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="shareRegister">Headline Website URL Address:</Label>
+              <select class="custom-select" id="1">
+                <option selected value="0">
+                  {" "}
+                  Pending{" "}
+                </option>
+                <option value="1">Received</option>
+                <option value="2">Approved</option>
+              </select>
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="shareCertificate">Website Compliance:</Label>
+              <Input
+                type="url"
+                name="OTA"
+                id="Url"
+                placeholder="Company URL"
+              ></Input>
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="CCR">Website URL - Proof of Domain:</Label>
+              <select class="custom-select" id="1">
+                <option selected value="0">
+                  {" "}
+                  Pending{" "}
+                </option>
+                <option value="1">Received</option>
+                <option value="2">Approved</option>
+              </select>
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="CCR">Ownership Structure Chart:</Label>
+              <select class="custom-select" id="1">
+                <option selected value="0">
+                  {" "}
+                  Pending{" "}
+                </option>
+                <option value="1">Received</option>
+                <option value="2">Approved</option>
+              </select>
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="CCR">Business Plan:</Label>
+              <select class="custom-select" id="1">
+                <option value="0"> Pending </option>
+                <option value="1">Received</option>
+                <option value="2">Approved</option>
+              </select>
+            </FormGroup>
+          </Col>
+        </Row>
+        <Link to="/kyc">
+          <Button>Next</Button>
+        </Link>
+      </Form>
+    </div>
+  );
+};
+
 export default CTI;

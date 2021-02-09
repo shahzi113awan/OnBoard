@@ -7,14 +7,8 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
 } from "reactstrap";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 export const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,21 +18,42 @@ export const Header = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <Link to="/">ONBOARD</Link>
+        <NavLink active tag={Link} to="/">
+          ONBOARD
+        </NavLink>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <Link to="/KYC">KYC</Link>
+              <NavLink tag={Link} to="/CI">
+                Compnay Information
+              </NavLink>
             </NavItem>
             <NavItem>
-              <Link to="/KYB">KYB</Link>
+              <NavLink tag={Link} to="/CTI">
+                Company Trading INFO
+              </NavLink>
             </NavItem>
             <NavItem>
-              <Link to="/CTI">Company Trading INFO</Link>
+              <NavLink tag={Link} tag={Link} to="/KYC">
+                KYC
+              </NavLink>
             </NavItem>
             <NavItem>
-              <Link to="/CI">Compnay Information</Link>
+              <NavLink tag={Link} to="/KYB">
+                KYB
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} to="/supporting-doc-kyb">
+               Supporting Doc
+              </NavLink>
+            </NavItem>
+
+            <NavItem>
+              <NavLink tag={Link} to="/check-List">
+                Check List
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>

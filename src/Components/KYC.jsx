@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { Col, Row,   Form, FormGroup, Label, Input } from "reactstrap";
+import { Col, Row, Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Link } from "react-router-dom";
 import moment from "moment";
 import countryList from "react-select-country-list";
 import Select from "react-select";
@@ -46,6 +47,11 @@ const KYC = ({ Done, completed, pending }) => {
   };
   return (
     <div>
+      <div>
+        <h2>
+          <span class="badge badge-success">KNOW YOUR CUSTOMER (KYC)</span>
+        </h2>
+      </div>
       <Form>
         <Row form>
           <Col md={6}>
@@ -182,6 +188,9 @@ const KYC = ({ Done, completed, pending }) => {
             </FormGroup>
           </Col>
         </Row>
+        <Link to="/kyb">
+          <Button>Next</Button>
+        </Link>
       </Form>
     </div>
   );
