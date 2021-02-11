@@ -1,14 +1,30 @@
-import React from "react";
-import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { Link } from "react-router-dom";
-
+import React, { useState } from 'react'
+import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Link } from 'react-router-dom'
 
 export default function CTI() {
+  const [KYB_SD, setKYB_SD] = useState({
+    fsd_cbs: '',
+    fsd_pbs: '',
+    fsd_pow: '',
+    fsd_cap: '',
+    lta_gfl: '',
+    lta_cra: '',
+    lta_fdsa: '',
+    lta_fbo_cr: '',
+  })
+  function handleInput(evt) {
+    console.log(KYB_SD)
+    setKYB_SD({
+      ...KYB_SD,
+      [evt.target.name]: evt.target.value,
+    })
+  }
   return (
     <div>
       <div>
         <h2>
-          <span class="badge badge-success">Supporting Documents (KYB):</span>
+          <span class='badge badge-success'>Supporting Documents (KYB):</span>
         </h2>
       </div>
       <Form>
@@ -23,48 +39,69 @@ export default function CTI() {
 
           <Col md={6}>
             <FormGroup>
-              <Label for="certificate">Corporate Bank Statements:</Label>
-              <select required={true} class="custom-select" id="1">
-                <option></option>
-                <option>Pending</option>
-                <option>Received</option>
-                <option>Approved</option>
+              <Label for='certificate'>Corporate Bank Statements:</Label>
+              <select
+                required={true}
+                class='custom-select'
+                id='1'
+                name='fsd_cbs'
+                onChange={handleInput}
+              >
+                <option value="Pending">Pending</option>
+                <option value="Received">Received</option>
+                <option value="Approved">Approved</option>
               </select>
             </FormGroup>
           </Col>
           <Col md={6}>
             <FormGroup>
-              <Label for="memo">Personal Bank Statements:</Label>
-              <select class="custom-select" id="1">
-                <option selected value="0">
+              <Label for='memo'>Personal Bank Statements:</Label>
+              <select
+                class='custom-select'
+                id='1'
+                name='fsd_pbs'
+                
+                onChange={handleInput}
+              >
+                <option selected value='Pending'>
                   Pending
                 </option>
-                <option value="1">Received</option>
-                <option value="2">Approved</option>
+                <option value='Received'>Received</option>
+                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
           <Col md={6}>
             <FormGroup>
-              <Label for="articles">Proof of Wealth:</Label>
-              <select class="custom-select" id="1">
-                <option selected value="0">
+              <Label for='articles'>Proof of Wealth:</Label>
+              <select
+                class='custom-select'
+                id='1'
+                name='fsd_pow'
+                onChange={handleInput}
+              >
+                <option selected value='Pending'>
                   Pending
                 </option>
-                <option value="1">Received</option>
-                <option value="2">Approved</option>
+                <option value='Received'>Received</option>
+                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
           <Col md={6}>
             <FormGroup>
-              <Label for="shareRegister">Company AML Policy:</Label>
-              <select class="custom-select" id="1">
-                <option selected value="0">
+              <Label for='shareRegister'>Company AML Policy:</Label>
+              <select
+                class='custom-select'
+                id='1'
+                name='fsd_cap'
+                onChange={handleInput}
+              >
+                <option selected value='Pending'>
                   Pending
                 </option>
-                <option value="1">Received</option>
-                <option value="2">Approved</option>
+                <option value='Received'>Received</option>
+                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -77,69 +114,78 @@ export default function CTI() {
           </Col>
           <Col md={6}>
             <FormGroup>
-              <Label for="shareCertificate">Gambling or Forex License:</Label>
-              <select class="custom-select" id="1">
-                <option selected value="0">
+              <Label for='shareCertificate'>Gambling or Forex License:</Label>
+              <select
+                class='custom-select'
+                id='1'
+                name='lta_gfl'
+                onChange={handleInput}
+              >
+                <option selected value='Pending'>
                   Pending
                 </option>
-                <option value="1">Received</option>
-                <option value="2">Approved</option>
+                <option value='Received'>Received</option>
+                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
           <Col md={6}>
             <FormGroup>
-              <Label for="CCR">Copywrite or Re-seller Agreement:</Label>
-              <select class="custom-select" id="1">
-                <option>Pending</option>
-                <option value="1">Received</option>
-                <option value="2">Approved</option>
+              <Label for='CCR'>Copywrite or Re-seller Agreement:</Label>
+              <select
+                class='custom-select'
+                id='1'
+                name='lta_cra'
+                onChange={handleInput}
+              >
+                <option value='Pending'>Pending</option>
+                <option value='Received'>Received</option>
+                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
           <Col md={6}>
             <FormGroup>
-              <Label for="CCR">Fulfilment or Drop Shipping Agreement:</Label>
-              <select class="custom-select" id="1">
-                <option selected value="0">
+              <Label for='CCR'>Fulfilment or Drop Shipping Agreement:</Label>
+              <select
+                class='custom-select'
+                id='1'
+                name='lta_fdsa'
+                onChange={handleInput}
+              >
+                <option selected value='Pending'>
                   Pending
                 </option>
-                <option value="1">Received</option>
-                <option value="2">Approved</option>
+                <option value='Received'>Received</option>
+                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
+
           <Col md={6}>
             <FormGroup>
-              <Label for="CCR">Copywrite or Re-seller Agreement:</Label>
-              <select class="custom-select" id="1">
-                <option selected value="0">
-                  Pending
-                </option>
-                <option value="1">Received</option>
-                <option value="2">Approved</option>
-              </select>
-            </FormGroup>
-          </Col>
-          <Col md={6}>
-            <FormGroup>
-              <Label for="CCR">
+              <Label for='CCR'>
                 FBO Company Registration (Nutra Merchants):
               </Label>
-              <select class="custom-select" id="1">
-                <option selected value="0">
+              <select
+                class='custom-select'
+                id='1'
+                name='lta_fbo_cr'
+                onChange={handleInput}
+              >
+                <option selected value='Pending'>
                   Pending
                 </option>
-                <option value="1">Received</option>
-                <option value="2">Approved</option>
+                <option value='Received'>Received</option>
+                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
         </Row>
-        <Link to="/check-List">
+        <Link to='/check-List'>
           <Button>Next</Button>
         </Link>
       </Form>
     </div>
-  );
+  )
 }

@@ -19,8 +19,8 @@ const KYC = ({ Done, completed, pending }) => {
     kyc_toProof: '',
     kyc_paDocument: '',
   })
-  console.log(KYC)
   function handleInput(evt) {
+    console.log(KYC)
     setKYC({
       ...KYC,
       [evt.target.name]: evt.target.value,
