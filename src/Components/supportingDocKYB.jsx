@@ -47,9 +47,8 @@ export default function CTI() {
                 name='fsd_cbs'
                 onChange={handleInput}
               >
-                <option value="Pending">Pending</option>
-                <option value="Received">Received</option>
-                <option value="Approved">Approved</option>
+                <option value='Pending'>Pending</option>
+                <option value='Received'>Received</option>
               </select>
             </FormGroup>
           </Col>
@@ -60,14 +59,12 @@ export default function CTI() {
                 class='custom-select'
                 id='1'
                 name='fsd_pbs'
-                
                 onChange={handleInput}
               >
                 <option selected value='Pending'>
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -84,7 +81,6 @@ export default function CTI() {
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -101,7 +97,6 @@ export default function CTI() {
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -125,7 +120,6 @@ export default function CTI() {
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -140,7 +134,6 @@ export default function CTI() {
               >
                 <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -157,7 +150,6 @@ export default function CTI() {
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -177,7 +169,6 @@ export default function CTI() {
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>

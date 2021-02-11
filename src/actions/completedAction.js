@@ -1,4 +1,4 @@
-export const completed = () => async (dispatch) => {
+export const Received = () => async (dispatch) => {
   try {
     dispatch({
       type: "SET_completed",
