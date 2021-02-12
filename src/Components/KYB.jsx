@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row, Form, FormGroup, Label, Button, Input } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import { Create } from '../actions/kybAction'
 
 export default function CTI() {
+  const dispatch = useDispatch()
+  const data = useSelector((state) => state.kybReducer)
+
   const [KYB, setKYB] = useState({
     kyb_coi: 'Pending',
     kyb_moa: 'Pending',
@@ -11,6 +16,11 @@ export default function CTI() {
     kyb_scs: 'Pending',
     kyb_ccre: 'Pending',
   })
+  useEffect(() => {
+    setKYB(data)
+  }, [data])
+
+  console.log(KYB)
   function handleInput(evt) {
     console.log(KYB)
     setKYB({
@@ -18,6 +28,15 @@ export default function CTI() {
       [evt.target.name]: evt.target.value,
     })
   }
+
+  const onSubmit = (e) => {
+    console.log('clicked')
+    e.preventDefault()
+
+    dispatch(Create(KYB))
+    // setState({ name: "", email: "", rollno: "" });
+  }
+
   return (
     <div>
       <div>
@@ -41,9 +60,7 @@ export default function CTI() {
                 name='kyb_coi'
                 onChange={handleInput}
               >
-                <option  value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -62,9 +79,7 @@ export default function CTI() {
                 name='kyb_moa'
                 onChange={handleInput}
               >
-                <option  value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -73,19 +88,17 @@ export default function CTI() {
             <FormGroup>
               <Label for='articles'>Articles of Association:</Label>
               <select
-              className={
-                KYB.kyb_aoa == 'Pending'
-                  ? 'border-red custom-select'
-                  : 'custom-select'
-              }
-              value={KYB.kyb_aoa}
+                className={
+                  KYB.kyb_aoa == 'Pending'
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYB.kyb_aoa}
                 id='1'
                 name='kyb_aoa'
                 onChange={handleInput}
               >
-                <option  value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -104,9 +117,7 @@ export default function CTI() {
                 name='kyb_sRegister'
                 onChange={handleInput}
               >
-                <option value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -127,9 +138,7 @@ export default function CTI() {
                 name='kyb_scs'
                 onChange={handleInput}
               >
-                <option value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -138,27 +147,25 @@ export default function CTI() {
             <FormGroup>
               <Label for='CCR'>Current Commercial Register Extract:</Label>
               <select
-               className={
-                KYB.kyb_ccre == 'Pending'
-                  ? 'border-red custom-select'
-                  : 'custom-select'
-              }
-              value={KYB.kyb_ccre}
+                className={
+                  KYB.kyb_ccre == 'Pending'
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYB.kyb_ccre}
                 id='1'
                 name='kyb_ccre'
                 onChange={handleInput}
               >
-                <option  value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
           </Col>
         </Row>
-        <Link to='/supporting-doc-kyb'>
-          <Button>Next</Button>
-        </Link>
+        {/* <Link to='/supporting-doc-kyb'> */}
+        <Button onClick={onSubmit}>Next</Button>
+        {/* </Link> */}
       </Form>
     </div>
   )
