@@ -5,8 +5,8 @@ import moment from 'moment'
 import countryList from 'react-select-country-list'
 import Select from 'react-select'
 import { connect } from 'react-redux'
-import { completed, pending } from '../actions/completedAction'
-const KYC = ({ Done, completed, pending }) => {
+import { Received, pending } from '../actions/completedAction'
+const KYC = ({ Done, Received, pending }) => {
   const [KYC, setKYC] = React.useState({
     kyc_name: '',
     kyc_sHolds: '',
@@ -78,6 +78,12 @@ const KYC = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='Name'>Name</Label>
               <Input
+                className={
+                  KYC.kyc_name == ''
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYC.kyc_name}
                 name='kyc_name'
                 onChange={handleInput}
                 type='text'
@@ -90,6 +96,12 @@ const KYC = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='shareHolds'>Share Holds</Label>
               <Input
+                className={
+                  KYC.kyc_sHolds == ''
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYC.kyc_sHolds}
                 name='kyc_sHolds'
                 onChange={handleInput}
                 type='number'
@@ -102,6 +114,12 @@ const KYC = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='passportID'>Passport / ID</Label>
               <Input
+                className={
+                  KYC.kyc_pID == ''
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYC.kyc_pID}
                 name='kyc_pID'
                 onChange={handleInput}
                 type='number'
@@ -114,6 +132,12 @@ const KYC = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='ExpiryDate'>Start Date</Label>
               <Input
+                className={
+                  KYC.kyc_startDate == ''
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYC.kyc_startDate}
                 name='kyc_startDate'
                 onChange={handleInput}
                 type='date'
@@ -126,6 +150,12 @@ const KYC = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='ExpiryDate'>Expiry Date</Label>
               <Input
+                className={
+                  KYC.kyc_ExpiryDate == ''
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYC.kyc_ExpiryDate}
                 name='kyc_ExpiryDate'
                 onChange={handleInput}
                 type='date'
@@ -148,8 +178,14 @@ const KYC = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='Nationality'>Country/Nationality</Label>
               <Select
+                className={
+                  KYC.kyc_nationality == ''
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYC.kyc_nationality}
                 options={options}
-                value={value}
+                // value={value}
                 name='kyc_nationality'
                 onChange={handleInput}
               />
@@ -159,6 +195,10 @@ const KYC = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='Notaized'>Notarized</Label>
               <Input
+                className={
+                  KYC.kyc_notarized == '' ? 'border-red ' : 'custom-select'
+                }
+                value={KYC.kyc_notarized}
                 name='kyc_notarized'
                 onChange={handleInput}
                 type='select'
@@ -173,6 +213,12 @@ const KYC = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='Address'>Address</Label>
               <Input
+                className={
+                  KYC.kyc_Address == ''
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYC.kyc_Address}
                 name='kyc_Address'
                 onChange={handleInput}
                 type='text'
@@ -184,7 +230,17 @@ const KYC = ({ Done, completed, pending }) => {
           <Col md={6}>
             <FormGroup>
               <Label for='typeOfProof'>Type of Proof</Label>
-              <Input type='select' name='kyc_toProof' onChange={handleInput}>
+              <Input
+                type='select'
+                name='kyc_toProof'
+                onChange={handleInput}
+                className={
+                  KYC.kyc_toProof == ''
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYC.kyc_toProof}
+              >
                 <option value='Utility Bill'>Utility Bill</option>
                 <option value='Others'>Others</option>
               </Input>
@@ -193,9 +249,18 @@ const KYC = ({ Done, completed, pending }) => {
           <Col md={6}>
             <FormGroup>
               <Label for='PAd'>Power Of Attorney Document:</Label>
-              <Input name='kyc_paDocument' onChange={handleInput}>
+              <Input
+                name='kyc_paDocument'
+                onChange={handleInput}
+                className={
+                  KYC.kyc_paDocument == ''
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYC.kyc_paDocument}
+              >
                 <option value='Pending'>Pending</option>
-                <option value='Completed'>Completed</option>
+                <option value='Received'>Received</option>
               </Input>
             </FormGroup>
           </Col>
@@ -212,6 +277,6 @@ const mapStateToProps = (state) => ({
   Done: state.completedReducer.complete,
 })
 export default connect(mapStateToProps, {
-  completed,
+  Received,
   pending,
 })(KYC)

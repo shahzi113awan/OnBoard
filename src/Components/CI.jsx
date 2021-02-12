@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom'
 
 export default function CI() {
   const [CI, setCI] = React.useState({
-    tpi_rcName: '',
-    tpi_aaSolution: '',
+    tpi_rcName: 'Pending',
+    tpi_aaSolution: 'Pending',
     tpi_ntc: '',
-    tpi_vtSector: '',
+    tpi_vtSector: 'Pending',
     tpi_date: '',
-    tpi_brPartner: '',
-    tpi_aBdmOwner: '',
-    tpi_ccLocation: '',
-    tpi_EEADocuments: '',
-    tpi_TLoAR: '',
+    tpi_brPartner: 'Pending',
+    tpi_aBdmOwner: 'Pending',
+    tpi_ccLocation: 'Pending',
+    tpi_EEADocuments: 'Pending',
+    tpi_TLoAR: 'Pending',
 
     mci_crAddress: '',
     mci_crNumber: '',
@@ -67,14 +67,18 @@ export default function CI() {
               <FormGroup>
                 <Label for='certificate'>Registered Company Name: </Label>
                 <select
-                  class='custom-select'
+                  value={CI.tpi_rcName}
+                  className={
+                    CI.tpi_rcName == 'Pending'
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
                   id='1'
                   name='tpi_rcName'
                   onChange={handleInput}
                 >
                   <option value='Pending'>Pending</option>
                   <option value='Received'>Received</option>
-                  <option value='Approved'>Approved</option>
                 </select>
               </FormGroup>
             </Col>
@@ -82,7 +86,11 @@ export default function CI() {
               <FormGroup>
                 <Label for='memo'>Allocated Acquirer / Solution:</Label>
                 <select
-                  class='custom-select'
+                  className={
+                    CI.tpi_aaSolution == 'Pending'
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
                   id='1'
                   name='tpi_aaSolution'
                   onChange={handleInput}
@@ -91,7 +99,6 @@ export default function CI() {
                     Pending
                   </option>
                   <option value='Received'>Received</option>
-                  <option value='Approved'>Approved</option>
                 </select>
               </FormGroup>
             </Col>
@@ -100,6 +107,11 @@ export default function CI() {
                 <Label for='NTC'>Trading / New To Cards (NTC):</Label>
 
                 <Input
+                  className={
+                    CI.tpi_ntc == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
                   onChange={handleInput}
                   required={false}
                   type='text'
@@ -113,16 +125,18 @@ export default function CI() {
               <FormGroup>
                 <Label for='shareRegister'>Vertical / Trading Sector: :</Label>
                 <select
-                  class='custom-select'
+                  className={
+                    CI.tpi_vtSector == 'Pending'
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.tpi_vtSector}
                   id='1'
                   name='tpi_vtSector'
                   onChange={handleInput}
                 >
-                  <option selected value='Pending'>
-                    Pending
-                  </option>
+                  <option value='Pending'>Pending</option>
                   <option value='Received'>Received</option>
-                  <option value='Approved'>Approved</option>
                 </select>
               </FormGroup>
             </Col>
@@ -130,6 +144,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='shareCertificate'>Application Boarded Date:</Label>
                 <Input
+                  className={
+                    CI.tpi_date == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.tpi_date}
                   onChange={handleInput}
                   type='date'
                   name='tpi_date'
@@ -142,7 +162,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='CCR'>Business / Referral Partner:</Label>
                 <select
-                  class='custom-select'
+                  className={
+                    CI.tpi_brPartner == 'Pending'
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.tpi_brPartner}
                   id='1'
                   name='tpi_brPartner'
                   onChange={handleInput}
@@ -151,7 +176,6 @@ export default function CI() {
                     Pending
                   </option>
                   <option value='Received'>Received</option>
-                  <option value='Approved'>Approved</option>
                 </select>
               </FormGroup>
             </Col>
@@ -159,16 +183,20 @@ export default function CI() {
               <FormGroup>
                 <Label for='CCR'>Assigned - BDM / Owner:</Label>
                 <select
-                  class='custom-select'
+                  className={
+                    CI.tpi_aBdmOwner == 'Pending'
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
                   id='1'
                   name='tpi_aBdmOwner'
+                  value={CI.tpi_aBdmOwner}
                   onChange={handleInput}
                 >
                   <option selected value='Pending'>
                     Pending
                   </option>
                   <option value='Received'>Received</option>
-                  <option value='Approved'>Approved</option>
                 </select>
               </FormGroup>
             </Col>
@@ -176,14 +204,18 @@ export default function CI() {
               <FormGroup>
                 <Label for='CCR'>Compliance Country Location:</Label>
                 <select
-                  class='custom-select'
+                  className={
+                    CI.tpi_ccLocation == 'Pending'
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.tpi_ccLocation}
                   id='1'
                   name='tpi_ccLocation'
                   onChange={handleInput}
                 >
                   <option value='Pending'> Pending </option>
                   <option value='Received'>Received</option>
-                  <option value='Approved'>Approved</option>
                 </select>
               </FormGroup>
             </Col>
@@ -191,14 +223,18 @@ export default function CI() {
               <FormGroup>
                 <Label for='CCR'>EEA Documents:</Label>
                 <select
-                  class='custom-select'
+                  className={
+                    CI.tpi_EEADocuments == 'Pending'
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.tpi_EEADocuments}
                   id='1'
                   name='tpi_EEADocuments'
                   onChange={handleInput}
                 >
                   <option value='Pending'> Pending </option>
                   <option value='Received'>Received</option>
-                  <option value='Approved'>Approved</option>
                 </select>
               </FormGroup>
             </Col>
@@ -206,14 +242,18 @@ export default function CI() {
               <FormGroup>
                 <Label for='CCR'>Trading License or Agreements Required:</Label>
                 <select
-                  class='custom-select'
+                  className={
+                    CI.tpi_TLoAR == 'Pending'
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.tpi_TLoAR}
                   id='1'
                   name='tpi_TLoAR'
                   onChange={handleInput}
                 >
                   <option value='Pending'> Pending </option>
                   <option value='Received'>Received</option>
-                  <option value='Approved'>Approved</option>
                 </select>
               </FormGroup>
             </Col>
@@ -235,6 +275,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='mci_crAddress'>Company Registered Address:</Label>
                 <Input
+                  className={
+                    CI.mci_crAddress == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.mci_crAddress}
                   name='mci_crAddress'
                   onChange={handleInput}
                   required={false}
@@ -248,6 +294,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Company Registered Number: </Label>
                 <Input
+                  className={
+                    CI.mci_crNumber == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.mci_crNumber}
                   name='mci_crNumber'
                   onChange={handleInput}
                   required={false}
@@ -263,6 +315,12 @@ export default function CI() {
                   Company Trading Address (If Applicable):
                 </Label>
                 <Input
+                  className={
+                    CI.mci_ctAddress == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.mci_ctAddress}
                   name='mci_ctAddress'
                   onChange={handleInput}
                   required={false}
@@ -276,10 +334,16 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Vertical / Trading Sector: </Label>
                 <Input
+                  className={
+                    CI.mci_vtSector == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.mci_vtSector}
                   name='mci_vtSector'
                   onChange={handleInput}
                   required={false}
-                  type='address'
+                  type='text'
                   id='address'
                   placeholder='Company Trading Address :'
                 ></Input>
@@ -301,6 +365,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Contact Name:</Label>
                 <Input
+                  className={
+                    CI.cci_cName == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.cci_cName}
                   name='cci_cName'
                   onChange={handleInput}
                   required={false}
@@ -314,6 +384,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Skype Address:</Label>
                 <Input
+                  className={
+                    CI.cci_skypeAddress == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.cci_skypeAddress}
                   name='cci_skypeAddress'
                   onChange={handleInput}
                   required={false}
@@ -328,6 +404,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Mobile Number: </Label>
                 <Input
+                  className={
+                    CI.cci_mNumber == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.cci_mNumber}
                   name='cci_mNumber'
                   onChange={handleInput}
                   required={false}
@@ -341,6 +423,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Landline Number: </Label>
                 <Input
+                  className={
+                    CI.cci_lNumber == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.cci_lNumber}
                   name='cci_lNumber'
                   onChange={handleInput}
                   required={false}
@@ -354,10 +442,16 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>OTP Mobile Number (IBAN Only): </Label>
                 <Input
+                  className={
+                    CI.cci_otpMNumber == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.cci_otpMNumber}
                   name='cci_otpMNumber'
                   onChange={handleInput}
                   required={false}
-                  type='otpmobile'
+                  type='phone'
                   id='address'
                   placeholder='OTP Mobile Number (IBAN Only)'
                 ></Input>
@@ -384,6 +478,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Company Registered Address:</Label>
                 <Input
+                  className={
+                    CI.tci_crAddress == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.tci_crAddress}
                   name='tci_crAddress'
                   onChange={handleInput}
                   required={false}
@@ -397,6 +497,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Company Registered Number: </Label>
                 <Input
+                  className={
+                    CI.tci_crNumber == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.tci_crNumber}
                   name='tci_crNumber'
                   onChange={handleInput}
                   required={false}
@@ -412,6 +518,12 @@ export default function CI() {
                   Company Trading Address (If Applicable):
                 </Label>
                 <Input
+                  className={
+                    CI.tci_ctAddress == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.tci_ctAddress}
                   name='tci_ctAddress'
                   onChange={handleInput}
                   required={false}
@@ -425,6 +537,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Website: </Label>
                 <Input
+                  className={
+                    CI.tci_wUrl == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.tci_wUrl}
                   name='tci_wUrl'
                   onChange={handleInput}
                   required={false}
@@ -450,6 +568,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Contact Name:</Label>
                 <Input
+                  className={
+                    CI.cci_2_cName == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.cci_2_cName}
                   name='cci_2_cName'
                   onChange={handleInput}
                   required={false}
@@ -463,6 +587,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Position:</Label>
                 <Input
+                  className={
+                    CI.cci_2_Position == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.cci_2_Position}
                   name='cci_2_Position'
                   onChange={handleInput}
                   required={false}
@@ -477,6 +607,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Mobile Number: </Label>
                 <Input
+                  className={
+                    CI.cci_2_mNumber == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.cci_2_mNumber}
                   name='cci_2_mNumber'
                   onChange={handleInput}
                   required={false}
@@ -490,6 +626,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>Landline Number: </Label>
                 <Input
+                  className={
+                    CI.cci_2_lNumber == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.cci_2_lNumber}
                   name='cci_2_lNumber'
                   onChange={handleInput}
                   required={false}
@@ -503,6 +645,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='address'>OTP Mobile Number (IBAN Only): </Label>
                 <Input
+                  className={
+                    CI.cci_2_otpMNumber == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.cci_2_otpMNumber}
                   name='cci_2_otpMNumber'
                   onChange={handleInput}
                   required={false}
@@ -511,11 +659,17 @@ export default function CI() {
                   placeholder='Company Trading Address :'
                 ></Input>
               </FormGroup>
-              </Col>
-              <Col md={6}>
+            </Col>
+            <Col md={6}>
               <FormGroup>
                 <Label for='address'>Skype Address:</Label>
                 <Input
+                  className={
+                    CI.cci_2_skypeAddress == ''
+                      ? 'border-red custom-select'
+                      : 'custom-select'
+                  }
+                  value={CI.cci_2_skypeAddress}
                   name='cci_2_skypeAddress'
                   onChange={handleInput}
                   required={false}

@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 
 export default function CTI() {
   const [KYB_SD, setKYB_SD] = useState({
-    fsd_cbs: '',
-    fsd_pbs: '',
-    fsd_pow: '',
-    fsd_cap: '',
-    lta_gfl: '',
-    lta_cra: '',
-    lta_fdsa: '',
-    lta_fbo_cr: '',
+    fsd_cbs: 'Pending',
+    fsd_pbs: 'Pending',
+    fsd_pow: 'Pending',
+    fsd_cap: 'Pending',
+    lta_gfl: 'Pending',
+    lta_cra: 'Pending',
+    lta_fdsa: 'Pending',
+    lta_fbo_cr: 'Pending',
   })
   function handleInput(evt) {
     console.log(KYB_SD)
@@ -41,15 +41,18 @@ export default function CTI() {
             <FormGroup>
               <Label for='certificate'>Corporate Bank Statements:</Label>
               <select
-                required={true}
-                class='custom-select'
+                className={
+                  KYB_SD.fsd_cbs == 'Pending'
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYB_SD.fsd_cbs}
                 id='1'
                 name='fsd_cbs'
                 onChange={handleInput}
               >
-                <option value="Pending">Pending</option>
-                <option value="Received">Received</option>
-                <option value="Approved">Approved</option>
+                <option value='Pending'>Pending</option>
+                <option value='Received'>Received</option>
               </select>
             </FormGroup>
           </Col>
@@ -57,17 +60,20 @@ export default function CTI() {
             <FormGroup>
               <Label for='memo'>Personal Bank Statements:</Label>
               <select
-                class='custom-select'
+                className={
+                  KYB_SD.fsd_pbs == 'Pending'
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYB_SD.fsd_pbs}
                 id='1'
                 name='fsd_pbs'
-                
                 onChange={handleInput}
               >
-                <option selected value='Pending'>
+                <option  value='Pending'>
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -75,16 +81,20 @@ export default function CTI() {
             <FormGroup>
               <Label for='articles'>Proof of Wealth:</Label>
               <select
-                class='custom-select'
+                className={
+                  KYB_SD.fsd_pow == 'Pending'
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYB_SD.fsd_pow}
                 id='1'
                 name='fsd_pow'
                 onChange={handleInput}
               >
-                <option selected value='Pending'>
+                <option  value='Pending'>
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -92,16 +102,20 @@ export default function CTI() {
             <FormGroup>
               <Label for='shareRegister'>Company AML Policy:</Label>
               <select
-                class='custom-select'
+                className={
+                  KYB_SD.fsd_cap == 'Pending'
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYB_SD.fsd_cap}
                 id='1'
                 name='fsd_cap'
                 onChange={handleInput}
               >
-                <option selected value='Pending'>
+                <option  value='Pending'>
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -116,16 +130,20 @@ export default function CTI() {
             <FormGroup>
               <Label for='shareCertificate'>Gambling or Forex License:</Label>
               <select
-                class='custom-select'
+                className={
+                  KYB_SD.lta_gfl == 'Pending'
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYB_SD.lta_gfl}
                 id='1'
                 name='lta_gfl'
                 onChange={handleInput}
               >
-                <option selected value='Pending'>
+                <option  value='Pending'>
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -133,14 +151,18 @@ export default function CTI() {
             <FormGroup>
               <Label for='CCR'>Copywrite or Re-seller Agreement:</Label>
               <select
-                class='custom-select'
+                className={
+                  KYB_SD.lta_cra == 'Pending'
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYB_SD.lta_cra}
                 id='1'
                 name='lta_cra'
                 onChange={handleInput}
               >
                 <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -148,16 +170,20 @@ export default function CTI() {
             <FormGroup>
               <Label for='CCR'>Fulfilment or Drop Shipping Agreement:</Label>
               <select
-                class='custom-select'
+                className={
+                  KYB_SD.lta_fdsa == 'Pending'
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYB_SD.lta_fdsa}
                 id='1'
                 name='lta_fdsa'
                 onChange={handleInput}
               >
-                <option selected value='Pending'>
+                <option  value='Pending'>
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
@@ -168,16 +194,20 @@ export default function CTI() {
                 FBO Company Registration (Nutra Merchants):
               </Label>
               <select
-                class='custom-select'
+                className={
+                  KYB_SD.lta_fbo_cr == 'Pending'
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={KYB_SD.lta_fbo_cr}
                 id='1'
                 name='lta_fbo_cr'
                 onChange={handleInput}
               >
-                <option selected value='Pending'>
+                <option  value='Pending'>
                   Pending
                 </option>
                 <option value='Received'>Received</option>
-                <option value='Approved'>Approved</option>
               </select>
             </FormGroup>
           </Col>
