@@ -184,10 +184,9 @@ const KYC = ({ Done, Received, pending }) => {
                     : 'custom-select'
                 }
                 value={KYC.kyc_nationality}
-                options={options}
-                // value={value}
                 name='kyc_nationality'
                 onChange={handleInput}
+                options={options}
               />
             </FormGroup>
           </Col>
