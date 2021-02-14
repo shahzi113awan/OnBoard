@@ -1,23 +1,28 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Col, Row, Form, FormGroup, Label, Input, Button } from 'reactstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import moment from 'moment'
 import countryList from 'react-select-country-list'
 import Select from 'react-select'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector, connect } from 'react-redux'
 import { Received, pending } from '../actions/completedAction'
+import { Create } from '../actions/kycAction'
 const KYC = ({ Done, Received, pending }) => {
-  const [KYC, setKYC] = React.useState({
-    kyc_name: '',
-    kyc_sHolds: '',
-    kyc_pID: '',
-    kyc_startDate: '',
-    kyc_ExpiryDate: '',
-    kyc_nationality: '',
-    kyc_notarized: '',
-    kyc_Address: '',
-    kyc_toProof: '',
-    kyc_paDocument: '',
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const data = useSelector((state) => state.kycReducer)
+  // console.log(data)
+  const [KYC, setKYC] = useState({
+    // kyc_name: '',
+    // kyc_sHolds: '',
+    // kyc_pID: '',
+    // kyc_startDate: '',
+    // kyc_ExpiryDate: '12',
+    // kyc_nationality: '',
+    // kyc_notarized: '',
+    // kyc_Address: '',
+    // kyc_toProof: '',
+    // kyc_paDocument: '',
   })
   function handleInput(evt) {
     console.log(KYC)
@@ -26,7 +31,17 @@ const KYC = ({ Done, Received, pending }) => {
       [evt.target.name]: evt.target.value,
     })
   }
+  useEffect(() => {
+    setKYC(data)
+  }, [data])
 
+  const onSubmit = (e) => {
+    e.preventDefault()
+    dispatch(Create(KYC))
+    console.log('KYC')
+    console.log(data)
+    history.push('/kyb')
+  }
   const [startDate, setStartDate] = useState()
   const [ExpiryDate, setExpiryDate] = useState()
   const [remainig, setremainig] = useState(0)
@@ -264,9 +279,8 @@ const KYC = ({ Done, Received, pending }) => {
             </FormGroup>
           </Col>
         </Row>
-        <Link to='/kyb'>
-          <Button>Next</Button>
-        </Link>
+
+        <Button onClick={onSubmit}>Next</Button>
       </Form>
     </div>
   )

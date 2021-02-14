@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row, Form, FormGroup, Label, Button, Input } from 'reactstrap'
 import { Link } from 'react-router-dom'
@@ -9,12 +9,12 @@ export default function CTI() {
   const data = useSelector((state) => state.kybReducer)
 
   const [KYB, setKYB] = useState({
-    kyb_coi: 'Pending',
-    kyb_moa: 'Pending',
-    kyb_aoa: 'Pending',
-    kyb_sRegister: 'Pending',
-    kyb_scs: 'Pending',
-    kyb_ccre: 'Pending',
+    // kyb_coi: 'Pending',
+    // kyb_moa: 'Pending',
+    // kyb_aoa: 'Pending',
+    // kyb_sRegister: 'Pending',
+    // kyb_scs: 'Pending',
+    // kyb_ccre: 'Pending',
   })
   useEffect(() => {
     setKYB(data)
@@ -35,6 +35,7 @@ export default function CTI() {
 
     dispatch(Create(KYB))
     // setState({ name: "", email: "", rollno: "" });
+    
   }
 
   return (

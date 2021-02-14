@@ -1,17 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Create } from '../actions/sdAction'
 
 export default function CTI() {
+  const dispatch = useDispatch()
+  const data = useSelector((state) => state.sdReducer)
   const [KYB_SD, setKYB_SD] = useState({
-    fsd_cbs: 'Pending',
-    fsd_pbs: 'Pending',
-    fsd_pow: 'Pending',
-    fsd_cap: 'Pending',
-    lta_gfl: 'Pending',
-    lta_cra: 'Pending',
-    lta_fdsa: 'Pending',
-    lta_fbo_cr: 'Pending',
+    // fsd_cbs: 'Pending',
+    // fsd_pbs: 'Pending',
+    // fsd_pow: 'Pending',
+    // fsd_cap: 'Pending',
+    // lta_gfl: 'Pending',
+    // lta_cra: 'Pending',
+    // lta_fdsa: 'Pending',
+    // lta_fbo_cr: 'Pending',
   })
   function handleInput(evt) {
     console.log(KYB_SD)
@@ -19,6 +23,12 @@ export default function CTI() {
       ...KYB_SD,
       [evt.target.name]: evt.target.value,
     })
+  }
+  useEffect(() => {
+    setKYB_SD(data)
+  }, [data])
+  const onSubmit = () => {
+    dispatch(Create(KYB_SD))
   }
   return (
     <div>
@@ -70,9 +80,7 @@ export default function CTI() {
                 name='fsd_pbs'
                 onChange={handleInput}
               >
-                <option  value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -91,9 +99,7 @@ export default function CTI() {
                 name='fsd_pow'
                 onChange={handleInput}
               >
-                <option  value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -112,9 +118,7 @@ export default function CTI() {
                 name='fsd_cap'
                 onChange={handleInput}
               >
-                <option  value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -140,9 +144,7 @@ export default function CTI() {
                 name='lta_gfl'
                 onChange={handleInput}
               >
-                <option  value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -180,9 +182,7 @@ export default function CTI() {
                 name='lta_fdsa'
                 onChange={handleInput}
               >
-                <option  value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -204,9 +204,7 @@ export default function CTI() {
                 name='lta_fbo_cr'
                 onChange={handleInput}
               >
-                <option  value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>

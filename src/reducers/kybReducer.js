@@ -1,11 +1,12 @@
-const iniTisalState = {kyb_coi: 'Pending',
+const initialState = {
+kyb_coi: 'Pending',
 kyb_moa: 'Pending',
-kyb_aoa: 'Pending',
+kyb_aoa: 'Received',
 kyb_sRegister: 'Pending',
 kyb_scs: 'Pending',
 kyb_ccre: 'Pending',};
 
-export const kybReducer = (state = iniTisalState, action) => {
+export const kybReducer = (state = initialState, action) => {
   switch (action.type) {
     case "CREATE_KYB":
         // console.log(action.payload);

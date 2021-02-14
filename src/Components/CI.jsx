@@ -1,43 +1,47 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Create } from '../actions/ciAction'
 
 export default function CI() {
+  const dispatch = useDispatch()
+  const data = useSelector((state) => state.ciReducer)
+  const history = useHistory()
   const [CI, setCI] = React.useState({
-    tpi_rcName: 'Pending',
-    tpi_aaSolution: 'Pending',
-    tpi_ntc: '',
-    tpi_vtSector: 'Pending',
-    tpi_date: '',
-    tpi_brPartner: 'Pending',
-    tpi_aBdmOwner: 'Pending',
-    tpi_ccLocation: 'Pending',
-    tpi_EEADocuments: 'Pending',
-    tpi_TLoAR: 'Pending',
-
-    mci_crAddress: '',
-    mci_crNumber: '',
-    mci_ctAddress: '',
-    mci_vtSector: '',
-
-    cci_cName: '',
-    cci_skypeAddress: '',
-    cci_mNumber: '',
-    cci_lNumber: '',
-    cci_otpMNumber: '',
-
-    tci_crAddress: '',
-    tci_crNumber: '',
-    tci_ctAddress: '',
-    tci_wUrl: '',
-
-    cci_2_cName: '',
-    cci_2_Position: '',
-    cci_2_mNumber: '',
-    cci_2_lNumber: '',
-    cci_2_otpMNumber: '',
-    cci_2_skypeAddress: '',
+    // tpi_rcName: 'Received',
+    // tpi_aaSolution: 'Pending',
+    // tpi_ntc: '',
+    // tpi_vtSector: 'Pending',
+    // tpi_date: '',
+    // tpi_brPartner: 'Pending',
+    // tpi_aBdmOwner: 'Pending',
+    // tpi_ccLocation: 'Pending',
+    // tpi_EEADocuments: 'Pending',
+    // tpi_TLoAR: 'Pending',
+    // mci_crAddress: '',
+    // mci_crNumber: '',
+    // mci_ctAddress: '',
+    // mci_vtSector: '',
+    // cci_cName: '',
+    // cci_skypeAddress: '',
+    // cci_mNumber: '',
+    // cci_lNumber: '',
+    // cci_otpMNumber: '',
+    // tci_crAddress: '',
+    // tci_crNumber: '',
+    // tci_ctAddress: '',
+    // tci_wUrl: '',
+    // cci_2_cName: '',
+    // cci_2_Position: '',
+    // cci_2_mNumber: '',
+    // cci_2_lNumber: '',
+    // cci_2_otpMNumber: '',
+    // cci_2_skypeAddress: '',
   })
+  useEffect(() => {
+    setCI(data)
+  }, [data])
   console.log(CI)
   function handleInput(evt) {
     setCI({
@@ -45,6 +49,16 @@ export default function CI() {
       [evt.target.name]: evt.target.value,
     })
   }
+
+  const onSubmit = (e) => {
+    console.log('clicked')
+    e.preventDefault()
+
+    dispatch(Create(CI))
+    history.push('/CTI')
+    // setState({ name: "", email: "", rollno: "" });
+  }
+
   return (
     <div className='mt-4 mb-5'>
       <div>
@@ -67,12 +81,12 @@ export default function CI() {
               <FormGroup>
                 <Label for='certificate'>Registered Company Name: </Label>
                 <select
-                  value={CI.tpi_rcName}
                   className={
                     CI.tpi_rcName == 'Pending'
                       ? 'border-red custom-select'
                       : 'custom-select'
                   }
+                  value={CI.tpi_rcName}
                   id='1'
                   name='tpi_rcName'
                   onChange={handleInput}
@@ -87,7 +101,7 @@ export default function CI() {
                 <Label for='memo'>Allocated Acquirer / Solution:</Label>
                 <select
                   className={
-                    CI.tpi_aaSolution == 'Pending'
+                    CI.tpi_aaSolution === 'Pending'
                       ? 'border-red custom-select'
                       : 'custom-select'
                   }
@@ -680,9 +694,8 @@ export default function CI() {
               </FormGroup>
             </Col>
           </Row>
-          <Link to='/cti'>
-            <Button>Next</Button>
-          </Link>
+
+          <Button onClick={onSubmit}>Next</Button>
         </div>
       </Form>
     </div>

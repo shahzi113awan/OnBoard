@@ -1,20 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Col, Row, Form, FormGroup, Label, Button, Input } from 'reactstrap'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { Create } from '../actions/ctiAction';
 
-import { completed, pending } from '../actions/completedAction'
+// import { completed, pending } from '../actions/completedAction'
 
 const CTI = ({ Done, completed, pending }) => {
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const data = useSelector((state) => state.ctiReducer)
   const [CTI, setCTI] = React.useState({
-    cti_fcaForm: 'Pending',
-    cti_bInformation: 'Pending',
-    cti_otAgreement: '',
-    cti_hwUrl: 'Pending',
-    cti_wCompliance: '',
-    cti_wUrl_proofDomain: 'Pending',
-    cti_osChart: 'Pending',
-    cti_bPlan: 'Pending',
+    // cti_fcaForm: 'Pending',
+    // cti_bInformation: 'Pending',
+    // cti_otAgreement: '',
+    // cti_hwUrl: 'Pending',
+    // cti_wCompliance: '',
+    // cti_wUrl_proofDomain: 'Pending',
+    // cti_osChart: 'Pending',
+    // cti_bPlan: 'Pending',
   })
   console.log(CTI)
   function handleInput(evt) {
@@ -23,7 +27,14 @@ const CTI = ({ Done, completed, pending }) => {
       [evt.target.name]: evt.target.value,
     })
   }
-
+  useEffect(() => {
+    setCTI(data)
+  }, [data])
+const onSubmit =(e)=>{
+e.preventDefault()
+dispatch(Create(CTI))
+history.push('/kyc')
+}
   return (
     <div>
       <div>
@@ -47,9 +58,7 @@ const CTI = ({ Done, completed, pending }) => {
                 name='cti_fcaForm'
                 onChange={handleInput}
               >
-                <option value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -68,9 +77,7 @@ const CTI = ({ Done, completed, pending }) => {
                 name='cti_bInformation'
                 onChange={handleInput}
               >
-                <option  value='Pending'>
-                  Pending
-                </option>
+                <option value='Pending'>Pending</option>
                 <option value='Received'>Received</option>
               </select>
             </FormGroup>
@@ -80,12 +87,12 @@ const CTI = ({ Done, completed, pending }) => {
               <Label for='OTA'>Office Tenancy Agreement:</Label>
 
               <Input
-               className={
-                CTI.cti_otAgreement == ''
-                  ? 'border-red custom-select'
-                  : 'custom-select'
-              }
-              value={CTI.cti_otAgreement}
+                className={
+                  CTI.cti_otAgreement == ''
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={CTI.cti_otAgreement}
                 name='cti_otAgreement'
                 onChange={handleInput}
                 required={false}
@@ -99,7 +106,7 @@ const CTI = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='shareRegister'>Headline Website URL Address:</Label>
               <select
-                 className={
+                className={
                   CTI.cti_hwUrl == 'Pending'
                     ? 'border-red custom-select'
                     : 'custom-select'
@@ -120,12 +127,12 @@ const CTI = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='shareCertificate'>Website Compliance:</Label>
               <Input
-               className={
-                CTI.cti_wCompliance == ''
-                  ? 'border-red custom-select'
-                  : 'custom-select'
-              }
-              value={CTI.cti_wCompliance}
+                className={
+                  CTI.cti_wCompliance == ''
+                    ? 'border-red custom-select'
+                    : 'custom-select'
+                }
+                value={CTI.cti_wCompliance}
                 name='cti_wCompliance'
                 onChange={handleInput}
                 type='url'
@@ -138,7 +145,7 @@ const CTI = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='CCR'>Website URL - Proof of Domain:</Label>
               <select
-                 className={
+                className={
                   CTI.cti_wUrl_proofDomain == 'Pending'
                     ? 'border-red custom-select'
                     : 'custom-select'
@@ -180,7 +187,7 @@ const CTI = ({ Done, completed, pending }) => {
             <FormGroup>
               <Label for='CCR'>Business Plan:</Label>
               <select
-                 className={
+                className={
                   CTI.cti_bPlan == 'Pending'
                     ? 'border-red custom-select'
                     : 'custom-select'
