@@ -9,6 +9,7 @@ const KYC = require("./routes/KYC");
 const CI = require("./routes/CI");
 const KYB = require("./routes/KYB");
 const CTI = require("./routes/CTI");
+const COM = require("./routes/COM");
 const SDC = require("./routes/supportingDoc");
 
 // Connecting mongoDB Database
@@ -40,6 +41,7 @@ app.use("/onboard", KYB);
 app.use("/onboard", CI);
 app.use("/onboard", CTI);
 app.use("/onboard", SDC);
+app.use("/onboard", COM);
 
 // PORT
 const port = process.env.PORT || 4000;

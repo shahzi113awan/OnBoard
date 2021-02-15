@@ -18,7 +18,7 @@ router.route("/cerate-KYC").post((req, res, next) => {
 });
 
 // READ KYCs
-router.route("/").get((req, res) => {
+router.route("/KYC").get((req, res) => {
   KYCSchema.find((error, data) => {
     if (error) {
       return next(error);

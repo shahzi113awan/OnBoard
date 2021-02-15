@@ -18,7 +18,7 @@ router.route("/cerate-CTI").post((req, res, next) => {
 });
 
 // READ CTIs
-router.route("/").get((req, res) => {
+router.route("/CTI").get((req, res) => {
   CTISchema.find((error, data) => {
     if (error) {
       return next(error);

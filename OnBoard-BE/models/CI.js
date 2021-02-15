@@ -70,30 +70,34 @@ let CISchema = new Schema(
       type: String,
     },
     tci_ctAddress: {
-type:String
-    } ,
+      type: String,
+    },
     tci_wUrl: {
-type:String
-    } ,
+      type: String,
+    },
 
     cci_2_cName: {
-type:String
-    } ,
+      type: String,
+    },
     cci_2_Position: {
-type:String
-    } ,
+      type: String,
+    },
     cci_2_mNumber: {
-type:String
-    } ,
+      type: String,
+    },
     cci_2_lNumber: {
-type:String
-    } ,
+      type: String,
+    },
     cci_2_otpMNumber: {
-type:String
-    } ,
+      type: String,
+    },
     cci_2_skypeAddress: {
-type:String
-    } ,
+      type: String,
+    },
+    COM: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "COM",
+    },
   },
   {
     collection: "Company Info",

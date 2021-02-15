@@ -18,7 +18,7 @@ router.route("/cerate-kyb").post((req, res, next) => {
 });
 
 // READ KYBs
-router.route("/").get((req, res) => {
+router.route("/KYB").get((req, res) => {
   KYBSchema.find((error, data) => {
     if (error) {
       return next(error);

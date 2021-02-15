@@ -7,18 +7,23 @@ let CISchema = require("../models/CI");
 
 // CREATE CI
 router.route("/cerate-CI").post((req, res, next) => {
-  CISchema.create(req.body, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      console.log(data);
-      res.json(data);
-    }
-  });
+  let obj = new CISchema(req.body);
+  obj
+    .save()
+
+    .then((obj) => {
+      console.log(req.body);
+      console.log(obj);
+
+      res.status(200).json({ obj: "CI has been added" });
+    })
+    .catch((err) => {
+      res.status(400).send("there is error in saving");
+    });
 });
 
 // READ CIs
-router.route("/").get((req, res) => {
+router.route("/CI").get((req, res) => {
   CISchema.find((error, data) => {
     if (error) {
       return next(error);

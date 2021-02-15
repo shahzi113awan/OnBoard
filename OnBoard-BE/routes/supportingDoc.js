@@ -18,7 +18,7 @@ router.route("/cerate-sdc").post((req, res, next) => {
 });
 
 // READ Students
-router.route("/").get((req, res) => {
+router.route("/SDC").get((req, res) => {
   SDCSchema.find((error, data) => {
     if (error) {
       return next(error);
